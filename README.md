@@ -2,7 +2,7 @@
 
 ## 1. Ссылки на материалы
 
-- Ссылка на сайт Московской Биржи для скаживания руководства пользователя: https://www.moex.com/a2193
+- Ссылка на сайт Московской Биржи для скачивания руководства пользователя: https://www.moex.com/a2193
 - Ссылка на содержание API: https://iss.moex.com/iss/reference/
 - Коды Bloomberg и Thomson Reuters: https://www.moex.com/s1170
 
