@@ -147,17 +147,17 @@ function securities(stocks, board){
 
 Теперь, когда всё готово, мы можем вернуться и применить новые функции в нашем пустом файле:
 
-- Функция <kbd>=securities(stocks, board)</kbd> для загрузке выбранного класса инструментов и в рамках конктерного борда
+- Функция <kbd>=securities(stocks, board)</kbd> для загрузки выбранного класса инструментов и в рамках конктерного борда:
   - **stocks** принимает значения 'shares' (акции) или 'bonds' (облигации, ОФЗ)
   - **board** может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
-- Функция <kbd>=quotes(stocks, board, ticker, start_date, end_date, days)</kbd>
+- Функция <kbd>=quotes(stocks, board, ticker, start_date, end_date, days)</kbd> для загрузки котировок по выбранному инструменту за период:
   - **stocks** принимает значения 'shares' (акции) или 'bonds' (облигации, ОФЗ)
   - **board** может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
   - **ticker** - это код ценной бумаги (например 'SBER')
   - **start_date** - дата начала периода выгрузки в формате ГГГГ-ММ-ДД
   - **end_date** - дата окончания выгрузки в формате ГГГГ-ММ-ДД
   - **date** - разница в днях между end_date и start_date (можно посчитать в самих google таблицах просто указав даты в ячейках и найдя разницу)
-- Функция <kbd>=average_value(stocks, board, ticker, start_date, end_date, days)</kbd>
+- Функция <kbd>=average_value(stocks, board, ticker, start_date, end_date, days)</kbd> функция для расчета среднедневного оборота по выбранному инструменту за период:
   - **stocks** принимает значения 'shares' (акции) или 'bonds' (облигации, ОФЗ)
   - **board** может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
   - **ticker** - это код ценной бумаги (например 'SBER')
