@@ -122,6 +122,17 @@ function myCounter(arr){
   return x
 }
 
+// Вспомогательная фунция, которая помогает найти количество рабочих дней за указанный промежуток времени
+function countDays(stocks, board, ticker, start_date, end_date){
+  var url = `https:\/\/iss.moex.com/iss/history/engines/stock/markets/${stocks}\/boards/${board}\/securities/${ticker}.json?from=${start_date}&till=${end_date}`;
+  var response = UrlFetchApp.fetch(url);
+  var content = response.getContentText();
+  var data = JSON.parse(content)["history"];
+  var days = myCounter(data['data'])
+
+  return days
+}
+
 // Функция, которая выгружает все инструменты с выбранного борда:
 // параметр stocks может принимать такие значения как 'shares' (акции) или 'bonds' (облигации, ОФЗ)
 // параметр board может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
