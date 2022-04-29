@@ -78,10 +78,10 @@ function quotes(stocks, board, ticker, start_date, end_date){
 // параметр end_date - дата окончания выгрузки в формате ГГГГ-ММ-ДД
 
 // Пример использования функции без ссылок на ячейки:
-// average_value("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01", 100)
+// average_value("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01")
 // Выдаст одно значение - среднедневной оборот за выбранный период.
 
-function average_value(stocks, board, ticker, start_date, end_date, days){
+function average_value(stocks, board, ticker, start_date, end_date){
   var url = `https:\/\/iss.moex.com/iss/history/engines/stock/markets/${stocks}\/boards/${board}\/securities/${ticker}.json?from=${start_date}&till=${end_date}`;
   var response = UrlFetchApp.fetch(url);
   var content = response.getContentText();
@@ -170,13 +170,13 @@ function securities(stocks, board){
 - Функция <kbd>=securities(stocks, board)</kbd> для загрузки выбранного класса инструментов и в рамках конктерного борда:
   - **stocks** принимает значения 'shares' (акции) или 'bonds' (облигации, ОФЗ)
   - **board** может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
-- Функция <kbd>=quotes(stocks, board, ticker, start_date, end_date, days)</kbd> для загрузки котировок по выбранному инструменту за период:
+- Функция <kbd>=quotes(stocks, board, ticker, start_date, end_date)</kbd> для загрузки котировок по выбранному инструменту за период:
   - **stocks** принимает значения 'shares' (акции) или 'bonds' (облигации, ОФЗ)
   - **board** может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
   - **ticker** - это код ценной бумаги (например 'SBER')
   - **start_date** - дата начала периода выгрузки в формате ГГГГ-ММ-ДД (всегда указывать дату в формуле в двойных кавычка, а если дата в ячейке, то проверять чтобы был выбран формат текста)
   - **end_date** - дата окончания выгрузки в формате ГГГГ-ММ-ДД (всегда указывать дату в формуле в двойных кавычка, а если дата в ячейке, то проверять чтобы был выбран формат текста)
-- Функция <kbd>=average_value(stocks, board, ticker, start_date, end_date, days)</kbd> функция для расчета среднедневного оборота по выбранному инструменту за период:
+- Функция <kbd>=average_value(stocks, board, ticker, start_date, end_date)</kbd> функция для расчета среднедневного оборота по выбранному инструменту за период:
   - **stocks** принимает значения 'shares' (акции) или 'bonds' (облигации, ОФЗ)
   - **board** может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
   - **ticker** - это код ценной бумаги (например 'SBER')
