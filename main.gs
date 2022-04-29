@@ -4,7 +4,6 @@
 // параметр ticker - это код ценной бумаги (например 'SBER')
 // параметр start_date - дата начала периода выгрузки в формате ГГГГ-ММ-ДД
 // параметр end_date - дата окончания выгрузки в формате ГГГГ-ММ-ДД
-// параметр date - разница в днях между end_date и start_date (можно посчитать в самих google таблицах просто указав даты в ячейках и найдя разницу)
 
 // Пример использования функции без ссылок на ячейки:
 // quotes("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01")
@@ -32,13 +31,12 @@ function quotes(stocks, board, ticker, start_date, end_date){
 // параметр ticker - это код ценной бумаги (например 'SBER')
 // параметр start_date - дата начала периода выгрузки в формате ГГГГ-ММ-ДД
 // параметр end_date - дата окончания выгрузки в формате ГГГГ-ММ-ДД
-// параметр date - разница в днях между end_date и start_date (можно посчитать в самих google таблицах просто указав даты в ячейках и найдя разницу)
 
 // Пример использования функции без ссылок на ячейки:
 // average_value("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01", 100)
 // Выдаст одно значение - среднедневной оборот за выбранный период.
 
-function average_value(stocks, board, ticker, start_date, end_date, days){
+function average_value(stocks, board, ticker, start_date, end_date){
   var url = `https:\/\/iss.moex.com/iss/history/engines/stock/markets/${stocks}\/boards/${board}\/securities/${ticker}.json?from=${start_date}&till=${end_date}`;
   var response = UrlFetchApp.fetch(url);
   var content = response.getContentText();
