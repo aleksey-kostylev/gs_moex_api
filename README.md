@@ -52,7 +52,7 @@ function myFunction() {
 // параметр date - разница в днях между end_date и start_date (можно посчитать в самих google таблицах просто указав даты в ячейках и найдя разницу)
 
 // Пример использования функции без ссылок на ячейки:
-// quotes('shares', 'TQBR', 'SBER', '2022-01-01', '2022-04-01')
+// quotes("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01")
 // Выдаст массив с данным (лучше ставить в ячейку A1)
 
 function quotes(stocks, board, ticker, start_date, end_date){
@@ -80,7 +80,7 @@ function quotes(stocks, board, ticker, start_date, end_date){
 // параметр date - разница в днях между end_date и start_date (можно посчитать в самих google таблицах просто указав даты в ячейках и найдя разницу)
 
 // Пример использования функции без ссылок на ячейки:
-// quotes('shares', 'TQBR', 'SBER', '2022-01-01', '2022-04-01')
+// average_value("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01", 100)
 // Выдаст одно значение - среднедневной оборот за выбранный период.
 
 function average_value(stocks, board, ticker, start_date, end_date, days){
@@ -118,7 +118,7 @@ return value;
 // параметр board может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
 
 // Пример использования функции без ссылок на ячейки:
-// securities('shares', 'TQBR')
+// securities("shares"; "TQBR")
 // Выдаст массив с данным (лучше ставить в ячейку A1)
 
 function securities(stocks, board){
