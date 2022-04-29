@@ -2,12 +2,12 @@
 // параметр stocks может принимать такие значения как 'shares' (акции) или 'bonds' (облигации, ОФЗ)
 // параметр board может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
 // параметр ticker - это код ценной бумаги (например 'SBER')
-// параметр start_date - дата начала периода выгрузки
-// параметр end_date - дата окончания выгрузки
+// параметр start_date - дата начала периода выгрузки в формате ГГГГ-ММ-ДД
+// параметр end_date - дата окончания выгрузки в формате ГГГГ-ММ-ДД
 // параметр date - разница в днях между end_date и start_date (можно посчитать в самих google таблицах просто указав даты в ячейках и найдя разницу)
 
 // Пример использования функции без ссылок на ячейки:
-// quotes('shares', 'TQBR', 'SBER', '2022-01-01', '2022-04-01')
+// quotes("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01")
 // Выдаст массив с данным (лучше ставить в ячейку A1)
 
 function quotes(stocks, board, ticker, start_date, end_date){
@@ -26,16 +26,16 @@ function quotes(stocks, board, ticker, start_date, end_date){
   
 }
   
-// Функция для расчета среднего оборота за выбранный период:
+// Функция для расчета среднего оборота (в деньгах) за выбранный период:
 // параметр stocks может принимать такие значения как 'shares' (акции) или 'bonds' (облигации, ОФЗ)
 // параметр board может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
 // параметр ticker - это код ценной бумаги (например 'SBER')
-// параметр start_date - дата начала периода выгрузки
-// параметр end_date - дата окончания выгрузки
+// параметр start_date - дата начала периода выгрузки в формате ГГГГ-ММ-ДД
+// параметр end_date - дата окончания выгрузки в формате ГГГГ-ММ-ДД
 // параметр date - разница в днях между end_date и start_date (можно посчитать в самих google таблицах просто указав даты в ячейках и найдя разницу)
 
 // Пример использования функции без ссылок на ячейки:
-// quotes('shares', 'TQBR', 'SBER', '2022-01-01', '2022-04-01')
+// average_value("shares"; "TQBR"; "SBER"; "2022-01-01"; "2022-04-01", 100)
 // Выдаст одно значение - среднедневной оборот за выбранный период.
 
 function average_value(stocks, board, ticker, start_date, end_date, days){
@@ -43,8 +43,8 @@ function average_value(stocks, board, ticker, start_date, end_date, days){
   var response = UrlFetchApp.fetch(url);
   var content = response.getContentText();
   var data = JSON.parse(content)["history"];
- 
-  var table = [] // создаем header
+
+  var table = []
   
   for(var row = 0; row < data['data'].length; row++){
     table = table.concat([[data['data'][row][5]]])
@@ -56,8 +56,13 @@ function average_value(stocks, board, ticker, start_date, end_date, days){
     return a + b;
   }, 0)
   
-  
-  return sum/days
+  var days = myCounter(data['data'])
+
+  if (sum == 0){
+    return 0
+  } else {
+    return sum/days
+  }
 }
 
 // Вспомогательная функция для того чтобы заменить запяную на точку и корректно сложить массив из чисел (используем в функции average_value).
@@ -68,12 +73,18 @@ function remove_comma(value){
 return value;
 };
 
+// Вспомогательная функция для подсчета кол-ва элементов в списке данных (возвращает кол-во рабочих дней в выбранном периоде)
+function myCounter(arr){
+  x = arr.filter(y => typeof Array() == typeof y).length
+  return x
+}
+
 // Функция, которая выгружает все инструменты с выбранного борда:
 // параметр stocks может принимать такие значения как 'shares' (акции) или 'bonds' (облигации, ОФЗ)
 // параметр board может принимать разные значения: для акций ('TQBR', 'SMAL', 'EQDP', 'TQDE') или для облигаций ('AUCT', 'TQOB', 'TQDB', 'EQOB', 'PSOB', 'RPMO')
 
 // Пример использования функции без ссылок на ячейки:
-// securities('shares', 'TQBR')
+// securities("shares"; "TQBR")
 // Выдаст массив с данным (лучше ставить в ячейку A1)
 
 function securities(stocks, board){
