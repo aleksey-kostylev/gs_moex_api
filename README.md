@@ -94,8 +94,8 @@ function average_value(stocks, board, ticker, start_date, end_date, days){
   }
   
   var sum = table.reduce(function(a, b){
-    a = removeComma(a)
-    b = removeComma(b)
+    a = remove_comma(a)
+    b = remove_comma(b)
     return a + b;
   }, 0)
   
